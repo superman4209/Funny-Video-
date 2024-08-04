@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fake Virus Joke</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 20%;
+        }
+        #no {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+    <script>
+        function moveNoButton() {
+            var noButton = document.getElementById('no');
+            noButton.style.top = Math.random() * 80 + '%';
+            noButton.style.left = Math.random() * 80 + '%';
+        }
+
+        function showFakeDeletion() {
+            document.getElementById('question').classList.add('hidden');
+            document.getElementById('buttons').classList.add('hidden');
+            document.getElementById('deleting').classList.remove('hidden');
+            setTimeout(function() {
+                document.getElementById('deleting').classList.add('hidden');
+                document.body.style.backgroundColor = 'black';
+                setTimeout(function() {
+                    alert("Good thing it wasn't a real virus!!! LOL");
+                    location.reload();
+                }, 5000);
+            }, 3000);
+        }
+    </script>
+</head>
+<body>
+    <div id="question">
+        <h1>Do you want to delete all files?</h1>
+    </div>
+    <div id="buttons">
+        <button onclick="showFakeDeletion()">Yes</button>
+        <button id="no" onmouseover="moveNoButton()">No</button>
+    </div>
+    <div id="deleting" class="hidden">
+        <h1>Deleting all files...</h1>
+        <p>0%</p>
+        <p>25%</p>
+        <p>50%</p>
+        <p>75%</p>
+        <p>100%</p>
+    </div>
+</body>
+</html>
